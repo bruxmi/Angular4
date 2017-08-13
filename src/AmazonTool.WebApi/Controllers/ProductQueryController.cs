@@ -1,49 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AmazonTool.Core.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AmazonTool.WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ProductQueryController : Controller
     {
-        private List<ProductGetVm> productList = new List<ProductGetVm>
-            {
-                new ProductGetVm
-                {
-                    imageUrl = "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
-                    description = "Leaf rake with 48-inch wooden handle.",
-                    price = 19.54m,
-                    productCode = "GDN-0011",
-                    Id = 1,
-                    productName = "Leaf Rake",
-                    releaseDate = new DateTime(),
-                    starRating = 3.2m
-                },
-                new ProductGetVm
-                {
-                    imageUrl = "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png",
-                    description = "15 gallon capacity rolling garden cart",
-                    price = 32.99m,
-                    productCode = "GDN-0023",
-                    Id = 2,
-                    productName = "Garden Cart",
-                    releaseDate = new DateTime(),
-                    starRating = 4.2m
-                },
-                new ProductGetVm
-                {
-                    imageUrl = "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png",
-                    description = "Curved claw steel hammer",
-                    price = 8.56m,
-                    productCode = "TBX-0048",
-                    Id = 3,
-                    productName = "Hammer",
-                    releaseDate = new DateTime(),
-                    starRating = 2.51m
-                }
-            };
+
+        public ProductQueryController(IProductQueryService productQueryService)
+        {
+            this.productQueryService = productQueryService;
+        }
+
+        private readonly IProductQueryService productQueryService;
+
         public class ProductGetVm
         {
             public int Id { get; set; }
@@ -58,16 +32,32 @@ namespace AmazonTool.WebApi.Controllers
 
         // GET api/values
         [HttpGet]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-
+            var productList = new List<ProductGetVm>();
+            var result = await this.productQueryService.GetProductsAsync();
+            foreach (var product in result)
+            {
+                var current = new ProductGetVm
+                {
+                    Id = product.Id,
+                    productCode = product.ProductCode,
+                    productName = product.ProductName,
+                    releaseDate = product.ReleaseDate,
+                    price = product.Price,
+                    description = product.Description,
+                    imageUrl = product.ImageUrl,
+                    starRating = product.StarRating
+                };
+                productList.Add(current);
+            }
             return Ok(productList);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProductById(int id)
+        public async Task<IActionResult> GetProductById(int id)
         {
-            var entity = productList.FirstOrDefault(a => a.Id == id);
+            var entity = (await this.productQueryService.GetProductsAsync()).FirstOrDefault(a => a.Id == id);
             return Ok(entity);
         }
     }

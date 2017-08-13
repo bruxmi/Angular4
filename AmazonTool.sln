@@ -9,7 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonTool.UI", "src\AmazonTool.UI\AmazonTool.UI.csproj", "{6CD54DFC-AA68-49BA-9B6E-9B62AC2107CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonTool.WebApi", "src\AmazonTool.WebApi\AmazonTool.WebApi.csproj", "{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonTool.WebApi", "src\AmazonTool.WebApi\AmazonTool.WebApi.csproj", "{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonTool.Business", "src\AmazonTool.Business\AmazonTool.Business.csproj", "{F36C6B18-0535-478B-820A-AAAF0EBA5628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonTool.Core", "src\AmazonTool.Core\AmazonTool.Core.csproj", "{DB5C7158-74C5-4749-B3D6-43202DC183D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazonTool.Bootstrap", "src\AmazonTool.Bootstrap\AmazonTool.Bootstrap.csproj", "{EBAC0F07-6CEF-495D-A79A-E0222171E313}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,18 @@ Global
 		{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36C6B18-0535-478B-820A-AAAF0EBA5628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36C6B18-0535-478B-820A-AAAF0EBA5628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36C6B18-0535-478B-820A-AAAF0EBA5628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36C6B18-0535-478B-820A-AAAF0EBA5628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5C7158-74C5-4749-B3D6-43202DC183D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5C7158-74C5-4749-B3D6-43202DC183D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5C7158-74C5-4749-B3D6-43202DC183D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5C7158-74C5-4749-B3D6-43202DC183D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBAC0F07-6CEF-495D-A79A-E0222171E313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAC0F07-6CEF-495D-A79A-E0222171E313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAC0F07-6CEF-495D-A79A-E0222171E313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAC0F07-6CEF-495D-A79A-E0222171E313}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +50,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6CD54DFC-AA68-49BA-9B6E-9B62AC2107CD} = {33FAB4B4-5342-4BAF-87FC-2F6B2F1FE9F2}
 		{7FB02B40-C3C6-4BE8-A3FE-4B61C901DAD7} = {33FAB4B4-5342-4BAF-87FC-2F6B2F1FE9F2}
+		{F36C6B18-0535-478B-820A-AAAF0EBA5628} = {33FAB4B4-5342-4BAF-87FC-2F6B2F1FE9F2}
+		{DB5C7158-74C5-4749-B3D6-43202DC183D8} = {33FAB4B4-5342-4BAF-87FC-2F6B2F1FE9F2}
+		{EBAC0F07-6CEF-495D-A79A-E0222171E313} = {33FAB4B4-5342-4BAF-87FC-2F6B2F1FE9F2}
 	EndGlobalSection
 EndGlobal

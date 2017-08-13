@@ -1,0 +1,66 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>Log-Table</h1>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-fixedheader table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-xs-1">Id</th>
+                        <th class="col-xs-1">Level</th>
+                        <th class="col-xs-1">Timestamp</th>
+                        <th class="col-xs-4">Message</th>
+                        <th class="col-xs-3">Exception</th>
+                        <th class="col-xs-1">Username</th>
+                        <th class="col-xs-1">RequestId</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let log of logs">
+                        <td class="col-xs-1 concat">
+                            <input type="text" [(ngModel)]="log.Id" />
+                        </td>
+                        <td class="col-xs-1 concat">
+                            <input type="text" [(ngModel)]="log.Level" />
+                        </td>
+                        <td class="col-xs-1 concat">
+                            <div>{{log.TimeStamp | date:"dd.MM.yy HH:mm:ss"}}</div>                          
+                        </td>
+                        <td class="col-xs-4 concat">
+                            <input type="text" [(ngModel)]="log.Message" />
+                        </td>
+                        <td class="col-xs-3 concat">
+                            <input type="text" [(ngModel)]="log.Exception" />
+                        </td>
+                        <td class="col-xs-1 concat">
+                            <input type="text" [(ngModel)]="log.UserName" />
+                        </td>
+                        <td class="col-xs-1 concat">
+                            <input type="text" [(ngModel)]="log.RequestId" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <span>Current page: {{logPaging.PageIndex}}</span>
+        <button class="btn btn-sm btn-default" (click)="prevPage()" [disabled]="!canClickPrevPage()">Previous</button>
+        <button class="btn btn-sm btn-default" (click)="nextPage()" [disabled]="!canClickNextPage()">Next</button>
+
+        <span>Loglevel Filter: </span>
+        <select (change)="logLevelFilterChanged($event.target.value)">
+            <option *ngFor="let opt of logLevelFilter" [value]="opt.key">{{opt.value}}</option>
+        </select>
+
+        <span>Page Count: {{getPageCount()}}</span>
+        <div>
+            <h3>Pagesize: </h3>
+            <select (change)="pageSizeChanged($event.target.value)">
+                <option *ngFor="let opt of pageSizes" [value]="opt.key">{{opt.value}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+

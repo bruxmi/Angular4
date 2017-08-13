@@ -1,0 +1,12 @@
+﻿.info-bar {
+    color: #333;
+    margin: 0px;
+    padding: 3px 10px;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    font-size: 1.25em;
+    text-align: right;
+    font-weight: bold;
+}

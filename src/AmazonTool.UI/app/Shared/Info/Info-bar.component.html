@@ -1,0 +1,4 @@
+﻿<div [@flyInOut]="isVisible" class="info-bar animated slideInUp" [style.background]="getInfoBarColor()" *ngIf="isVisible">
+    <span ng-class="icon" class="pull-left"></span>
+    <span style="padding-right: 20px">{{infoMessage.message}}</span>
+</div>

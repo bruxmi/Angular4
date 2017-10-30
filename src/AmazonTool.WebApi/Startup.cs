@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using System.ComponentModel;
 using AmazonTool.Bootstrap;
 
 namespace AmazonTool.WebApi
@@ -29,22 +26,18 @@ namespace AmazonTool.WebApi
 
         // ConfigureServices is where you register dependencies. This gets
         // called by the runtime before the Configure method, below.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
+            //services.RegisterDbContext(this.Configuration);
             services.AddMvc();
-            var builder = Bootstrap.Bootstrapper.BootstrapApplication();
-            builder.Populate(services);
-            this.ApplicationContainer = builder.Build();
-            return new AutofacServiceProvider(this.ApplicationContainer);
+            Bootstrapper.RegisterDbContext(services, Configuration);
         }
-
 
         public void Configure(IApplicationBuilder app,ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
         {
             loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             app.UseMvc();
-
             appLifetime.ApplicationStopped.Register(() => this.ApplicationContainer.Dispose());
         }
     }

@@ -1,18 +1,18 @@
 ﻿export interface ILog {
-    Id: string;
-    Message: string;
-    TimeStamp: Date;
-    Exception: string;
-    Level: string;
-    RequestId: string;
-    UserName: string;
+    id: string;
+    message: string;
+    timeStamp: Date;
+    exception: string;
+    level: string;
+    requestId: string;
+    userName: string;
 }
 
 export interface ILogPaging {
-    Count: number;
-    PageIndex: number;
-    PageSize: number;
-    SearchTerm: string;
-    IsDescending: boolean;
-    Logs: ILog[];
+    count: number;
+    pageIndex: number;
+    pageSize: number;
+    searchTerm: string;
+    isDescending: boolean;
+    logs: ILog[];
 }

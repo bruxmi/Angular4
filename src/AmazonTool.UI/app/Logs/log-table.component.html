@@ -19,25 +19,25 @@
                 <tbody>
                     <tr *ngFor="let log of logs">
                         <td class="col-xs-1 concat">
-                            <input type="text" [(ngModel)]="log.Id" />
+                            <input type="text" [(ngModel)]="log.id" />
                         </td>
                         <td class="col-xs-1 concat">
-                            <input type="text" [(ngModel)]="log.Level" />
+                            <input type="text" [(ngModel)]="log.level" />
                         </td>
                         <td class="col-xs-1 concat">
-                            <div>{{log.TimeStamp | date:"dd.MM.yy HH:mm:ss"}}</div>                          
+                            <div>{{log.timeStamp | date:"dd.MM.yy HH:mm:ss"}}</div>                          
                         </td>
                         <td class="col-xs-4 concat">
-                            <input type="text" [(ngModel)]="log.Message" />
+                            <input type="text" [(ngModel)]="log.message" />
                         </td>
                         <td class="col-xs-3 concat">
-                            <input type="text" [(ngModel)]="log.Exception" />
+                            <input type="text" [(ngModel)]="log.exception" />
                         </td>
                         <td class="col-xs-1 concat">
-                            <input type="text" [(ngModel)]="log.UserName" />
+                            <input type="text" [(ngModel)]="log.userName" />
                         </td>
                         <td class="col-xs-1 concat">
-                            <input type="text" [(ngModel)]="log.RequestId" />
+                            <input type="text" [(ngModel)]="log.requestId" />
                         </td>
                     </tr>
                 </tbody>

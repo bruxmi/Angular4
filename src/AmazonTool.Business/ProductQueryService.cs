@@ -1,5 +1,6 @@
 ﻿using AmazonTool.Core.Entities;
 using AmazonTool.Core.Interfaces.Services;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,14 @@ namespace AmazonTool.Business
 {
     public class ProductQueryService : IProductQueryService
     {
+        public ILog logger { get; }
+
         private readonly List<Product> productList;
 
-        public ProductQueryService()
+        public ProductQueryService(ILog logger)
         {
+            this.logger = logger;
+            logger.Debug("Fuck off it works");
             productList = new List<Product>
             {
                 new Product

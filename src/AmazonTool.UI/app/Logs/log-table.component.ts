@@ -39,49 +39,49 @@ export class LogTableComponent implements OnInit {
         ];
 
         this.logPaging = {
-            Count: 0,
-            IsDescending: true,
-            PageIndex: 0,
-            PageSize: 50,
-            Logs: null,
-            SearchTerm: "All"
+            count: 0,
+            isDescending: true,
+            pageIndex: 0,
+            pageSize: 50,
+            logs: null,
+            searchTerm: "All"
         }
         this.getLogs();
     }
 
     public pageSizeChanged(pageSizeIndex: string) {
         let convertedPageSizeIndex = Number.parseInt(pageSizeIndex);
-        this.logPaging.PageSize = this.pageSizes[convertedPageSizeIndex].value;
+        this.logPaging.pageSize = this.pageSizes[convertedPageSizeIndex].value;
         this.getLogs();
     }
 
     public logLevelFilterChanged(logLevelIndex: string) {
          let convertedLogLevelIndex = Number.parseInt(logLevelIndex);
-        this.logPaging.SearchTerm = this.logLevelFilter[convertedLogLevelIndex].value;
+        this.logPaging.searchTerm = this.logLevelFilter[convertedLogLevelIndex].value;
         this.getLogs();
     }
    
     public getPageCount(): string {
         let result = "1";
-        if (this.logPaging.PageSize != 0) {
-            result = (this.logPaging.Count / this.logPaging.PageSize).toString();
+        if (this.logPaging.pageSize != 0) {
+            result = (this.logPaging.count / this.logPaging.pageSize).toString();
             result = Number.parseInt(result).toString();
         }
         return result;
     }
 
     public prevPage(): void {
-        this.logPaging.PageIndex--;
+        this.logPaging.pageIndex--;
         this.getLogs();
     }
 
     public nextPage(): void {
-        this.logPaging.PageIndex++;
+        this.logPaging.pageIndex++;
         this.getLogs();
     }
 
     public canClickPrevPage(): boolean {
-        if (!this.isLoading && this.logPaging.PageIndex > 0) {
+        if (!this.isLoading && this.logPaging.pageIndex > 0) {
             return true;
         }
         return false;
@@ -89,12 +89,12 @@ export class LogTableComponent implements OnInit {
 
     public canClickNextPage(): boolean {
         let count = 0;
-        if (this.logPaging.PageSize != 0) {
-            let tmp = (this.logPaging.Count / this.logPaging.PageSize).toString();
+        if (this.logPaging.pageSize != 0) {
+            let tmp = (this.logPaging.count / this.logPaging.pageSize).toString();
             count = Number.parseInt(tmp);
         }
 
-        if (!this.isLoading && this.logPaging.PageIndex < count) {
+        if (!this.isLoading && this.logPaging.pageIndex < count) {
             return true;
         }
         return false;
@@ -106,13 +106,12 @@ export class LogTableComponent implements OnInit {
             (logsPaging: ILogPaging) => this.onSucceedLoading(logsPaging),
             error => this.onError(error)
         );
-        this.infoService.showInfo("loading product...", "success")
     }
 
     private onSucceedLoading(logPaging: ILogPaging): void {
         this.logPaging = logPaging;
-        this.logPaging.PageSize = Number.parseInt(this.logPaging.PageSize.toString());
-        this.logs = logPaging.Logs;
+        this.logPaging.pageSize = Number.parseInt(this.logPaging.pageSize.toString());
+        this.logs = logPaging.logs;
         this.isLoading = false;
         this.infoService.showInfo("Loaded logging entries", "success")
     }
